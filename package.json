@@ -1,0 +1,12 @@
+{
+  "name": "youtube-static",
+  "version": "1.0.0",
+  "description": "In this project, I have tried my best to observe and implement \"Accessibility\" (as a responsibility) as much as possible. (however 100% of accessibility principles can never be observed.) * Using semantic elements * Using WAI-ARIA attributes where needed (role, aria-label, ...) * Obvious links and buttons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,641 @@
+<!-- Copyright © 2024 Parsa Farahani -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr" >
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" >
+    <meta name="author" content="Parsa Farahani" >
+    <meta name="description" content="Youtube video player" >
+    <meta name="title" content="Youtube" >
+    <title>Youtube</title>
+    <link rel="icon" href="./youtube-favicon.ico" type="image/x-icon" >
+
+    <!--Open Graph(Facebook)-->
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="http://127.0.0.1:5501/" >
+    <meta property="og:site_name" content="Youtube" >
+    <meta property="og:title" content="Youtube" >
+    <meta property="og:description" content="Youtube is a greate platform to share your videos , watch , learn and entertain!" >
+    <meta property="og:image" content="./youtube-meta-banner.png" >
+    <meta property="og:image:type" content="image/png" >
+    <meta property="og:image:width" content="940" >
+    <meta property="og:image:height" content="788" >
+    <meta property="og:image:alt" content="The Youtube logo, featuring on a dark background" >
+
+    <!--Twitter-->
+    <meta property="twitter:card" content="summary_large_image" >
+    <meta property="twitter:url" content="http://127.0.0.1:5501/" >
+    <meta property="twitter:title" content="Youtube" >
+    <meta property="twitter:description" content="Youtube is a greate platform to share your videos , watch , learn and entertain!" >
+    <meta property="twitter:creator" content="Parsa Farahani" >
+    <meta property="twitter:image" content="./youtube-meta-banner.png" >
+    
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer ></script>
+</head>
+<body draggable="false" ondragstart="return false;" ondrop="return false;" >
+    
+    <div id="cont">
+        <header class="main-header">
+            <nav id="main-top-nav" >
+                <a href="/" id="logo" aria-label="Youtube home" >
+                    <h1 id="logo-text" >
+                        <span class="logo-text-tube" >YouTube</span>
+                    </h1>
+                </a>
+                <search id="main-top-nav-search-cont" >
+                    <form id="main-top-nav-search-form" action="/">
+                        <input id="main-top-nav-search-inp" type="search" aria-label="search in the youtube" >
+                        <button id="main-top-nav-search-btn" aria-label="search" >
+                            <svg id="main-top-nav-search-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M8.195 0c4.527 0 8.196 3.62 8.196 8.084a7.989 7.989 0 0 1-1.977 5.267l5.388 5.473a.686.686 0 0 1-.015.98a.71.71 0 0 1-.993-.014l-5.383-5.47a8.23 8.23 0 0 1-5.216 1.849C3.67 16.169 0 12.549 0 8.084C0 3.62 3.67 0 8.195 0m0 1.386c-3.75 0-6.79 2.999-6.79 6.698c0 3.7 3.04 6.699 6.79 6.699s6.791-3 6.791-6.699c0-3.7-3.04-6.698-6.79-6.698"/></svg>
+                        </button>
+                    </form>
+                </search>
+                <a href="#" id="add-video" aria-label="add video" >
+                    <div id="add-video-cont" >
+                        <span class="add-video-btn" >
+                            <svg class="add-video-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="currentColor" d="M18 15h-4v-4h-2v4H8v2h4v4h2v-4h4z"/><path fill="currentColor" d="M21 26H4a2.002 2.002 0 0 1-2-2V8a2.002 2.002 0 0 1 2-2h17a2.002 2.002 0 0 1 2 2v4.057l5.419-3.87A1 1 0 0 1 30 9v14a1 1 0 0 1-1.581.814L23 19.944V24a2.002 2.002 0 0 1-2 2M4 8v16.001L21 24v-6a1 1 0 0 1 1.581-.813L28 21.057V10.943l-5.419 3.87A1 1 0 0 1 21 14V8Z"/></svg>
+                        </span>
+                    </div>
+                </a>
+            </nav>
+        </header>
+        
+        <div id="main-content" >
+            <noscript>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m-1-4h2V7h-2zm1 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
+                Your browser dosen't support Javascript, or it is turned off.
+            </noscript>
+            <main>
+                <div id="current-video-cont" >
+                    <figure id="current-video-fig" >
+                        <video unselectable="on" id="current-video" preload="metadata" poster="assets/thumbnails/sintel.jpg" controls controlslist="nodownload noremoteplayback" disablepictureinpicture disableremoteplayback tabindex="-1" >
+                            <source src="assets/videos/sintel-1024-surround.mp4" >
+                            <track label="English" src="assets/subtitles/sintel_en.vtt" kind="subtitles" srclang="en" data-default="true" >
+                            <track label="Deustch" src="assets/subtitles/sintel_de.vtt" kind="subtitles" srclang="de" data-default="false" >
+                            <track label="Espanol" src="assets/subtitles/sintel_es.vtt" kind="subtitles" srclang="es" data-default="false" >
+                            <p>Your browser dosen't support video element. </p>
+                        </video>
+                        <div id="current-video-controls-cont" >
+                            <div id="current-video-progress-cont" >
+                                <div id="current-video-progress-bar" data-video-controler tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" >
+                                    <div id="current-video-seek-bar" ></div>
+                                    <div id="current-video-play-progress">
+                                        <div id="current-video-play-progress-thumb" ></div>
+                                    </div>
+                                    <div id="current-video-buffer-progress"></div>
+                                </div>
+                            </div>
+                            <div id="current-video-control-btns-cont" >
+                                <a href="javascript:void(0)" role="button" id="current-video-play-btn" class="current-video-control-btn" aria-label="play pause" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-play-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="m96 448l320-192L96 64z"/></svg>
+                                    <div class="control-btn-tooltip" >Play/Pause</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-next-btn" class="current-video-control-btn" aria-label="next video" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-next-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 12.667L5.777 19.482A.5.5 0 0 1 5 19.066V4.934a.5.5 0 0 1 .777-.416L16 11.333V5a1 1 0 1 1 2 0v14a1 1 0 1 1-2 0z"/></svg>
+                                    <div class="control-btn-tooltip" >Next</div>
+                                </a>
+                                <div id="current-video-volume-cont" data-state="inactive" >
+                                    <a href="javascript:void(0)" role="button" id="current-video-volume-mute-btn" class="current-video-control-btn" aria-label="mute unmute" aria-disabled="true" data-video-controler data-state="inactive" >
+                                        <svg id="current-video-control-unmuted-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77"/></svg>
+                                        <div class="control-btn-tooltip" >Volume</div>
+                                    </a>
+                                    <div id="current-video-volume-range-cont" >
+                                        <div id="current-video-volume-range-bar" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="100" >
+                                            <div id="current-video-volume-range" >
+                                                <div id="current-video-volume-range-thumb" ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a role="button" id="current-video-time-chapters-btn" class="current-video-control-btn" data-state="inactive" >
+                                    <span id="current-video-time-cont" >
+                                        <span id="current-video-current-time" >00:00</span>
+                                        <span>&nbsp;/&nbsp;</span>
+                                        <span id="current-video-duration-time" >00:00</span>
+                                    </span>
+                                    <span class="video-sidebar-status-dot-cont" >
+                                        <svg class="video-sidebar-status-dot-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                    </span>
+                                    <span id="current-video-chapters-cont" >
+                                        Chapters
+                                        <svg id="current-video-chapters-arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 17l5-5l-5-5"/></svg>
+                                    </span>
+                                    <div class="control-btn-tooltip" style="left: 130px;" >Video Chapters</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-subtitles-btn" class="current-video-control-btn" aria-label="subtitles on off" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <div id="current-video-subtitles-btn-icon-box">
+                                        <svg id="current-video-control-subtitles-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M18 11h-1.5v-.5h-2v3h2V13H18v1a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1m-7 1H9.5v-.5h-2v3h2V13H11v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1m8-6H5c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+                                    </div>
+                                    <div class="control-btn-tooltip" >Subtitles</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-settings-btn" class="current-video-control-btn" aria-label="video settings" aria-haspopup="menu" aria-expanded="false" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-settings-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m9.25 22l-.4-3.2q-.325-.125-.612-.3t-.563-.375L4.7 19.375l-2.75-4.75l2.575-1.95Q4.5 12.5 4.5 12.338v-.675q0-.163.025-.338L1.95 9.375l2.75-4.75l2.975 1.25q.275-.2.575-.375t.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3t.562.375l2.975-1.25l2.75 4.75l-2.575 1.95q.025.175.025.338v.674q0 .163-.05.338l2.575 1.95l-2.75 4.75l-2.95-1.25q-.275.2-.575.375t-.6.3l-.4 3.2zm2.8-6.5q1.45 0 2.475-1.025T15.55 12q0-1.45-1.025-2.475T12.05 8.5q-1.475 0-2.488 1.025T8.55 12q0 1.45 1.013 2.475T12.05 15.5"/></svg>
+                                    <div class="control-btn-tooltip" >Settings</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-picinpic-btn" class="current-video-control-btn" aria-label="picture in picture" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-picinpic-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-8v6h8zm-2 4h-4v-2h4zm4-12H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V4.98C23 3.88 22.1 3 21 3m0 16.02H3V4.97h18z"/></svg>
+                                    <div class="control-btn-tooltip" >Picture in Picture</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-theater-btn" class="current-video-control-btn" aria-label="theater mode" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-theater-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="currentColor" d="M8.5 22.5A3.5 3.5 0 0 0 5 26v48a3.5 3.5 0 0 0 3.5 3.5h83A3.5 3.5 0 0 0 95 74V26a3.5 3.5 0 0 0-3.5-3.5zm3.5 7h76v41H12z" color="currentColor"/></svg>
+                                    <div class="control-btn-tooltip" >Theater Mode</div>
+                                </a>
+                                <a href="javascript:void(0)" role="button" id="current-video-fs-btn" class="current-video-control-btn" aria-label="fullscreen" aria-disabled="true" data-video-controler data-state="inactive" >
+                                    <svg id="current-video-control-fs-icon" class="current-video-control-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z"/></svg>
+                                    <div class="control-btn-tooltip" >Fullscreen</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="current-video-5secseek-cont-back" class="current-video-5secseek-cont" >
+                            <div id="current-video-5secseek-icon-cont-back" class="current-video-5secseek-icon-cont">
+                                <svg id="current-video-5secseek-icon-back-1" class="current-video-5secseek-icon current-video-5secseek-icon-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.248 5.439L5.74 11.569a.5.5 0 0 0 0 .863l10.508 6.13A.5.5 0 0 0 17 18.13V5.87a.5.5 0 0 0-.752-.431"/></svg>
+                                <svg id="current-video-5secseek-icon-back-2" class="current-video-5secseek-icon current-video-5secseek-icon-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.248 5.439L5.74 11.569a.5.5 0 0 0 0 .863l10.508 6.13A.5.5 0 0 0 17 18.13V5.87a.5.5 0 0 0-.752-.431"/></svg>
+                                <svg id="current-video-5secseek-icon-back-3" class="current-video-5secseek-icon current-video-5secseek-icon-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.248 5.439L5.74 11.569a.5.5 0 0 0 0 .863l10.508 6.13A.5.5 0 0 0 17 18.13V5.87a.5.5 0 0 0-.752-.431"/></svg>
+                                <div class="current-video-5secseek-text" >5 Seconds</div>
+                            </div>
+                        </div>
+                        <div id="current-video-5secseek-cont-forward" class="current-video-5secseek-cont" >
+                            <div id="current-video-5secseek-icon-cont-forward" class="current-video-5secseek-icon-cont">
+                                <svg id="current-video-5secseek-icon-forward-1" class="current-video-5secseek-icon current-video-5secseek-icon-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M15 10.001c0 .299-.305.514-.305.514l-8.561 5.303C5.51 16.227 5 15.924 5 15.149V4.852c0-.777.51-1.078 1.135-.67l8.561 5.305c-.001 0 .304.215.304.514"/></svg>
+                                <svg id="current-video-5secseek-icon-forward-2" class="current-video-5secseek-icon current-video-5secseek-icon-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M15 10.001c0 .299-.305.514-.305.514l-8.561 5.303C5.51 16.227 5 15.924 5 15.149V4.852c0-.777.51-1.078 1.135-.67l8.561 5.305c-.001 0 .304.215.304.514"/></svg>
+                                <svg id="current-video-5secseek-icon-forward-3" class="current-video-5secseek-icon current-video-5secseek-icon-forward" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="currentColor" d="M15 10.001c0 .299-.305.514-.305.514l-8.561 5.303C5.51 16.227 5 15.924 5 15.149V4.852c0-.777.51-1.078 1.135-.67l8.561 5.305c-.001 0 .304.215.304.514"/></svg>
+                                <div class="current-video-5secseek-text" >5 Seconds</div>
+                            </div>
+                        </div>
+                        <div id="current-video-volume-popup-cont" >
+                            100%
+                        </div>
+                    </figure>
+                    <div id="current-video-dependencies-cont">
+                        <header id="current-video-caption-cont" >
+                            <h1 id="current-video-caption" >Sintel | Blender Foundation (English | Deustch | Espanol - subtitles)</h1>
+                        </header>
+                        <aside id="description-cont" >
+                            <div id="description-links-cont" >
+                                <div id="description-account-cont">
+                                    <div id="description-account-links" class="description-link-cont" >
+                                        <div class="description-account-image-cont" >
+                                            <a href="#" aria-label="account avatar link" >
+                                                <img class="description-account-image" src="assets/account-images/account.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="description-account-name-cont">
+                                            <a href="#" id="description-account-name-link" ><span id="description-account-name">Blender Foundation</span></a>
+                                            <div id="description-account-subscribers-text" >159K subscripers</div>
+                                        </div>
+                                    </div>
+                                    <div id="description-subscribe-link-cont" class="description-link-cont" >
+                                        <a href="#" role="button" id="description-subscribe-link" class="description-link" >Subscribe</a>
+                                    </div>
+                                </div>
+                                <div id="descsription-links-bar">
+                                    <div class="description-link-cont" >
+                                        <a href="#" role="button" class="description-link" >Like</a>
+                                    </div>
+                                    <div class="description-link-cont" >
+                                        <a href="#" role="button" class="description-link" >Share</a>
+                                    </div>
+                                    <div class="description-link-cont" >
+                                        <a href="#" role="button" class="description-link" >Save</a>
+                                    </div>
+                                    <div class="description-link-cont" >
+                                        <a href="#" role="button" class="description-link" >...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="description-text-cont" >
+                                <p>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, vitae itaque rerum id rem sapiente voluptatem minima ipsa omnis, cupiditate explicabo! Velit mollitia quas commodi? Atque ducimus neque id consequatur debitis, officia repellendus eos ratione incidunt quaerat reiciendis iste molestiae deserunt! Aliquid consequatur, fugit sint consequuntur saepe minima magnam perspiciatis voluptatibus quo doloribus error facere iusto autem, inventore est dignissimos quis amet expedita eligendi molestias similique, in iure. Impedit, fugiat.
+                                </p>
+                            </div>
+                        </aside>
+                        <hr class="current-video-hr" >
+                        <section id="comments-cont" >
+                            <h2 class="comments-title" >1,128 Comments</h2>
+                            <ul class="comments-list" >
+                                <li class="comment-item" >
+                                    <article class="comment-cont" >
+                                        <div class="comment-cont-left" >
+                                            <a href="" class="comment-account-image-link">
+                                                <img class="comment-account-image" src="assets/account-images/user.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="comment-cont-right" >
+                                            <div class="comment-account-name-cont" >
+                                                <a href="" class="comment-account-text-link" >@parsa8311032</a>
+                                                <span class="comment-account-date" >1 month ago</span>
+                                            </div>
+                                            <div class="comment-text" >
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quod at neque amet velit. Alias nobis blanditiis, sed voluptatibus assumenda delectus at, dolor quasi esse animi eaque, natus possimus non.
+                                            </div>
+                                            <div class="comment-btns-cont" >
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2M4 10h2v9H4zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7z"/></svg>
+                                                </span>
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H6.693A2.01 2.01 0 0 0 4.82 4.298l-2.757 7.351A1 1 0 0 0 2 12v2c0 1.103.897 2 2 2h5.612L8.49 19.367a2.004 2.004 0 0 0 .274 1.802c.376.52.982.831 1.624.831H12c.297 0 .578-.132.769-.36l4.7-5.64H20c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2m-8.469 17h-1.145l1.562-4.684A1 1 0 0 0 11 14H4v-1.819L6.693 5H16v9.638zM18 14V5h2l.001 9z"/></svg>
+                                                </span>
+                                                <span class="comment-reply-btn" >Reply</span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="comment-item" >
+                                    <article class="comment-cont" >
+                                        <div class="comment-cont-left" >
+                                            <a href="" class="comment-account-image-link">
+                                                <img class="comment-account-image" src="assets/account-images/user.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="comment-cont-right" >
+                                            <div class="comment-account-name-cont" >
+                                                <a href="" class="comment-account-text-link" >@parsa8311032</a>
+                                                <span class="comment-account-date" >1 month ago</span>
+                                            </div>
+                                            <div class="comment-text" >
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quod at neque amet velit. Alias nobis blanditiis, sed voluptatibus assumenda delectus at, dolor quasi esse animi eaque, natus possimus non.
+                                            </div>
+                                            <div class="comment-btns-cont" >
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2M4 10h2v9H4zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7z"/></svg>
+                                                </span>
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H6.693A2.01 2.01 0 0 0 4.82 4.298l-2.757 7.351A1 1 0 0 0 2 12v2c0 1.103.897 2 2 2h5.612L8.49 19.367a2.004 2.004 0 0 0 .274 1.802c.376.52.982.831 1.624.831H12c.297 0 .578-.132.769-.36l4.7-5.64H20c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2m-8.469 17h-1.145l1.562-4.684A1 1 0 0 0 11 14H4v-1.819L6.693 5H16v9.638zM18 14V5h2l.001 9z"/></svg>
+                                                </span>
+                                                <span class="comment-reply-btn" >Reply</span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="comment-item" >
+                                    <article class="comment-cont" >
+                                        <div class="comment-cont-left" >
+                                            <a href="" class="comment-account-image-link">
+                                                <img class="comment-account-image" src="assets/account-images/user.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="comment-cont-right" >
+                                            <div class="comment-account-name-cont" >
+                                                <a href="" class="comment-account-text-link" >@parsa8311032</a>
+                                                <span class="comment-account-date" >1 month ago</span>
+                                            </div>
+                                            <div class="comment-text" >
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quod at neque amet velit. Alias nobis blanditiis, sed voluptatibus assumenda delectus at, dolor quasi esse animi eaque, natus possimus non.
+                                            </div>
+                                            <div class="comment-btns-cont" >
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2M4 10h2v9H4zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7z"/></svg>
+                                                </span>
+                                                <span class="comment-btn" >
+                                                    <svg class="comment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H6.693A2.01 2.01 0 0 0 4.82 4.298l-2.757 7.351A1 1 0 0 0 2 12v2c0 1.103.897 2 2 2h5.612L8.49 19.367a2.004 2.004 0 0 0 .274 1.802c.376.52.982.831 1.624.831H12c.297 0 .578-.132.769-.36l4.7-5.64H20c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2m-8.469 17h-1.145l1.562-4.684A1 1 0 0 0 11 14H4v-1.819L6.693 5H16v9.638zM18 14V5h2l.001 9z"/></svg>
+                                                </span>
+                                                <span class="comment-reply-btn" >Reply</span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <aside id="videos-sidebar-cont" >
+                        <ul class="videos-sidebar-list" >
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster4.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster12.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster17.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster16.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster9.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont" >
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster5.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont">
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster8.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont">
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster11.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading">
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont">
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster10.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading" >
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                            <li class="video-sidebar-item" >
+                                <article class="video-sidebar-cont">
+                                    <div class="video-sidebar-poster-cont" >
+                                        <a href="" class="video-sidebar-link" >
+                                            <img src="assets/thumbnails/poster7.jpg" class="video-sidebar-poster" alt="">
+                                        </a>
+                                        <span class="video-sidebar-preview-time" >
+                                            23:04
+                                        </span>
+                                    </div>
+                                   <div class="video-sidebar-titles-cont">
+                                        <a href="" class="video-sidebar-titles-link" >
+                                            <div class="video-sidebar-title" >
+                                                <h3 class="video-sidebar-title-heading">
+                                                    <span>How to make Beautiful 3D models | Blender 5.1 Tutorial</span>
+                                                </h3>
+                                            </div>
+                                            <div class="video-sidebar-channel-name" >
+                                                <span>CG Boost</span>
+                                            </div>
+                                            <div class="video-sidebar-status" >
+                                                <span>14K views</span>
+                                                <span class="video-sidebar-status-dot">
+                                                    <svg class="video-sidebar-status-dot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"/></svg>
+                                                </span>
+                                                <span>4 hours ago</span>
+                                            </div>
+                                        </a>
+                                   </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </main>
+        </div>
+
+        <footer id="footer" >
+            <p id="footer-copyright-text" >
+                Copyright © 2024 Parsa Farahani. All Rights Reserved.
+            </p>
+        </footer>
+    </div>
+
+    <template id="stored-icons" >
+        <svg id="current-video-control-play-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="m96 448l320-192L96 64z"/></svg>
+        <svg id="current-video-control-pause-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M14 19V5h4v14zm-8 0V5h4v14z"/></svg>
+        <svg id="current-video-control-unmuted-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77"/></svg>
+        <svg id="current-video-control-muted-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4L9.91 6.09L12 8.18M4.27 3L3 4.27L7.73 9H3v6h4l5 5v-6.73l4.25 4.26c-.67.51-1.42.93-2.25 1.17v2.07c1.38-.32 2.63-.95 3.68-1.81L19.73 21L21 19.73l-9-9M19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.916 8.916 0 0 0 21 12c0-4.28-3-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71m-2.5 0c0-1.77-1-3.29-2.5-4.03v2.21l2.45 2.45c.05-.2.05-.42.05-.63"/></svg>
+        <svg id="current-video-control-fs-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z"/></svg>
+        <svg id="current-video-control-minimise-icon" class="current-video-control-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 16h3v3h2v-5H5zm3-8H5v2h5V5H8zm6 11h2v-3h3v-2h-5zm2-11V5h-2v5h5V8z"/></svg>
+        <svg id="current-video-control-subtitles-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 19V5h16v14zm1-1h14V6H5zm1.692-3.308h4.385v-1.461h-.885v.577H7.577v-3.616h2.615v.616h.885v-1.5H6.692zm6.231 0h4.385v-1.461h-.885v.577h-2.615v-3.616h2.615v.616h.885v-1.5h-4.385zM5 18V6z"/></svg>
+        <svg id="current-video-control-playbackSpeed-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2.05v2c4.39.54 7.5 4.53 6.96 8.92c-.46 3.64-3.32 6.53-6.96 6.96v2c5.5-.55 9.5-5.43 8.95-10.93c-.45-4.75-4.22-8.5-8.95-8.97zM5.67 19.74A9.994 9.994 0 0 0 11 22v-2a8.002 8.002 0 0 1-3.9-1.63zm1.43-14c1.12-.9 2.47-1.48 3.9-1.68v-2c-1.95.19-3.81.94-5.33 2.2zM5.69 7.1L4.26 5.67A9.885 9.885 0 0 0 2.05 11h2c.19-1.42.75-2.77 1.64-3.9M4.06 13h-2c.2 1.96.97 3.81 2.21 5.33l1.42-1.43A8.002 8.002 0 0 1 4.06 13M10 16.5l6-4.5l-6-4.5z"/></svg>
+        <svg id="current-video-control-quality-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M18 4a1 1 0 1 0-2 0v1H4a1 1 0 0 0 0 2h12v1a1 1 0 1 0 2 0V7h2a1 1 0 1 0 0-2h-2zM4 11a1 1 0 1 0 0 2h2v1a1 1 0 1 0 2 0v-1h12a1 1 0 1 0 0-2H8v-1a1 1 0 0 0-2 0v1zm-1 7a1 1 0 0 1 1-1h12v-1a1 1 0 1 1 2 0v1h2a1 1 0 1 1 0 2h-2v1a1 1 0 1 1-2 0v-1H4a1 1 0 0 1-1-1"/></g></svg>
+        <svg id="current-video-control-settings-arrow-right-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m13.172 12l-4.95-4.95l1.414-1.413L16 12l-6.364 6.364l-1.414-1.415z"/></svg>
+        <svg id="current-video-control-settings-arrow-left-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6z"/></svg>
+        <svg id="current-video-control-settings-subtitles-check-icon" class="current-video-control-settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z"/></svg>
+    </template>
+</body>
+</html>

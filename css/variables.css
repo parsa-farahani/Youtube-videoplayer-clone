@@ -1,0 +1,12 @@
+:root {
+    --main-top-nav-height: 60px;
+    --current-video-control-btn-width: 40px;
+    --current-video-control-btn-height: 40px;
+    --current-video-control-settings-width: 260px;
+    --current-video-control-settings-subtitles-cue-fontsize: 1.5rem;
+
+    --main-dark-theme-bg-color: #111;
+    --main-text-color: rgba(255, 255, 255, .8);
+    --progress-normal-color: rgba(255, 255, 255, 0.4);
+    --progress-focus-color: rgba(255, 255, 255, .7);
+}
