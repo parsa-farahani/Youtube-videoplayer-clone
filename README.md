@@ -1,7 +1,7 @@
 # YouTube Video Player Clone
 
 ## Preview
-[![YouTube Video Player Clone Preview](assets/screenshots/sc-1.png)](https://parsa-farahani.github.io/youtube-clone)
+[![YouTube Video Player Clone Preview](assets/screenshots/sc-1.png)](https://parsa-farahani.github.io/Youtube-videoplayer-clone/)
 
 
 
