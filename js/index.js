@@ -33,6 +33,8 @@ let DURATION; // duratuion of current playing video
 let isCurrentVideoPlayProgressThumbFocus = false;
 let isMouseInProgressArea = false;
 
+let hideFsControlsTimeout = null;
+
 if (!!currentVideo) {
     currentVideo.controls = false;
     currentVideo.removeAttribute("disablepictureinpicture");
@@ -910,6 +912,26 @@ if (!!currentVideo) {
             handlePlaypauseCurrentVideo();
         })
 
+        currentVideo.addEventListener("play", function(e) {
+            if (e.target !== currentVideo) return;
+            changePlaypauseIcon();
+            if (document.querySelector('.fs-controls-cont')) {
+                clearTimeout(hideFsControlsTimeout);
+                hideFsControlsTimeout = setTimeout(() => {
+                    controlsCont.style.opacity = "0";
+                }, 3000);
+            }
+        })
+
+        currentVideo.addEventListener("pause", function(e) {
+            if (e.target !== currentVideo) return;
+            changePlaypauseIcon();
+            if (document.querySelector('.fs-controls-cont')) {
+                clearTimeout(hideFsControlsTimeout);
+                controlsCont.style.opacity = "1";
+            }
+        })
+
         // Mobile Size Controls //
         if (window.innerWidth <= 720) {
             menuContainer.classList.add("mobile-menu-container")
@@ -985,19 +1007,21 @@ if (!!currentVideo) {
         })
 
 
-        // controlsCont.addEventListener("mouseenter", (e) => {
-        //     const controlsCont = e.target.closest(".fs-controls-cont");
-        //     if (!controlsCont) return;
-        //     controlsCont.style.opacity = "1 !important";
-        // })
+        controlsCont.addEventListener("mouseenter", (e) => {
+            clearTimeout(hideFsControlsTimeout);
+            const controlsCont = e.target.closest(".fs-controls-cont");
+            if (!controlsCont) return;
+            controlsCont.style.opacity = "1";
+        })
 
-        // controlsCont.addEventListener("mouseleave", (e) => {
-        //     const controlsCont = e.target.closest(".fs-controls-cont");
-        //     if (!controlsCont) return;
-        //     setTimeout(() => {
-        //         controlsCont.style.opacity = "0 !important";
-        //     }, 3000);
-        // })
+        controlsCont.addEventListener("mouseleave", (e) => {
+            const controlsCont = e.target.closest(".fs-controls-cont");
+            if (!controlsCont) return;
+            clearTimeout(hideFsControlsTimeout);
+            hideFsControlsTimeout = setTimeout(() => {
+                controlsCont.style.opacity = "0";
+            }, 3000);
+        })
 
         /* ----------------------End of Events----------------------------- */
 
@@ -1157,11 +1181,15 @@ if (!!currentVideo) {
 
     function changePlaypauseIcon() {
         if (currentVideo.paused || currentVideo.ended) {
-            playpauseBtn.querySelector("#current-video-control-pause-icon").remove();
-            playpauseBtn.appendChild(storedIconsTemplate.content.getElementById("current-video-control-play-icon").cloneNode(true));
+            if (playpauseBtn.querySelector("#current-video-control-pause-icon")) {
+                playpauseBtn.querySelector("#current-video-control-pause-icon").remove();
+                playpauseBtn.appendChild(storedIconsTemplate.content.getElementById("current-video-control-play-icon").cloneNode(true));
+            }
         } else {
-            playpauseBtn.querySelector("#current-video-control-play-icon").remove();
-            playpauseBtn.appendChild(storedIconsTemplate.content.getElementById("current-video-control-pause-icon").cloneNode(true));
+            if (playpauseBtn.querySelector("#current-video-control-play-icon")) {
+                playpauseBtn.querySelector("#current-video-control-play-icon").remove();
+                playpauseBtn.appendChild(storedIconsTemplate.content.getElementById("current-video-control-pause-icon").cloneNode(true));
+            }
         }
     }
 
@@ -1508,7 +1536,7 @@ if (!!currentVideo) {
             })
             btn.addEventListener("blur", (e) => {
                 const controlsCont = e.target.closest(".fs-controls-cont");
-                if ( !controlsCont || !!( e.relatedTarget.matches("[data-video-controler]") ) ) return;
+                if ( !controlsCont || !!( e.relatedTarget?.matches("[data-video-controler]") ) ) return;
                 setTimeout(() => {
                     controlsCont.style.opacity = "0";
                 }, 3000);
