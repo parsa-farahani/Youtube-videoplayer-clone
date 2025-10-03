@@ -495,25 +495,25 @@ if (!!currentVideo) {
 
         /* Loading Spinner */
         currentVideo.addEventListener("waiting", () => {
-            if (loadingCont.classList.has('shown')) return;
+            if (loadingCont.classList.contains('shown')) return;
             
             loadingCont.classList.add('shown');
         })
         
         currentVideo.addEventListener("playing", () => {
-            if (loadingCont.classList.has('shown')) {
+            if (loadingCont.classList.contains('shown')) {
                 loadingCont.classList.remove("shown");
             }
         });
 
         currentVideo.addEventListener("pause", () => {
-            if (loadingCont.classList.has('shown')) {
+            if (loadingCont.classList.contains('shown')) {
                 loadingCont.classList.remove("shown");
             }
         });
 
         currentVideo.addEventListener("ended", () => {
-            if (loadingCont.classList.has('shown')) {
+            if (loadingCont.classList.contains('shown')) {
                 loadingCont.classList.remove("shown");
             }
         });

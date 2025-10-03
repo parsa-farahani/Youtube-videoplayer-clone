@@ -288,7 +288,7 @@ video#current-video {
 }
 
 /* /////////// Spinner //////// */
-.video-loading-cont {
+#video-loading-cont {
     pointer-events: none;
     position: absolute;
     inset: 0;
