@@ -539,21 +539,26 @@ if (!!currentVideo) {
         })
 
 
-        currentVideo.addEventListener("timeupdate", function() {    // Update the 'play-progress' by updating the time of video
-            // const crntTime = Math.floor(currentVideo.currentTime);
-            const crntTime = currentVideo.currentTime;
+        function updateProgressbar(crntTime) {
             playProgress.style.width = `${(100 * crntTime) / DURATION}%`;
             currentTimeText.innerText = formatVideoTime(crntTime);
             lastCurrentTime = crntTime;
             progressBar.setAttribute('aria-valuenow', crntTime);
             progressBar.setAttribute('aria-valuetext', formatVideoTime(crntTime));
+        }
+
+        currentVideo.addEventListener("timeupdate", function() {    // Update the 'play-progress' by updating the time of video
+            // const crntTime = Math.floor(currentVideo.currentTime);
+            const crntTime = currentVideo.currentTime;
+            updateProgressbar(crntTime);
         })
 
         progressBar.addEventListener("click", function(e) {
             const boundingRect = e.currentTarget.getBoundingClientRect();
             const clickPos = (e.pageX - boundingRect.left) / e.currentTarget.offsetWidth;
-            currentVideo.currentTime = clickPos * currentVideo.duration;
-            
+            const crntTime = clickPos * currentVideo.duration
+            updateProgressbar(crntTime);
+            currentVideo.currentTime = crntTime;
         })
 
         progressCont.addEventListener("mouseenter", function() {
