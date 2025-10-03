@@ -236,6 +236,8 @@ main {
 
 video#current-video {
     position: relative;
+
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     background-color: black;
@@ -284,6 +286,37 @@ video#current-video {
 #current-video[data-subfont="times-new-roman"]::cue {
     font-family: 'Times New Roman', Times, serif;
 }
+
+/* /////////// Spinner //////// */
+.video-loading-cont {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #000000a0;
+    border-radius: 10px;
+    transition: opacity 200ms;
+    opacity: 0;
+
+    &.shown {
+        opacity: 1;
+    }
+}
+
+.video-loading-spinner {
+
+    svg {
+        width: 60px;
+        height: 60px;
+        color: #ffffffaa !important;
+        fill: currentColor !important;
+    }
+}
+/* //////////////////////////// */
 
 
 #current-video[data-subfontcolor="white"]::cue {
@@ -734,6 +767,7 @@ video#current-video {
     outline-offset: 5px;
 
     position: relative;
+    z-index: 5;
 
     transition: height .2s;
 

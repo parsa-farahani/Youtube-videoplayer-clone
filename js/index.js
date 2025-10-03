@@ -27,6 +27,7 @@ const theatermodeBtn = document.getElementById("current-video-theater-btn");
 const fullscreenBtn = document.getElementById("current-video-fs-btn");
 const volumePopup = document.getElementById("current-video-volume-popup-cont");
 const storedIconsTemplate = document.getElementById("stored-icons");
+const loadingCont = document.getElementById('video-loading-cont');
 
 let DURATION; // duratuion of current playing video
 
@@ -492,6 +493,33 @@ if (!!currentVideo) {
         })
         /* ------------------------------------------- */
 
+        /* Loading Spinner */
+        currentVideo.addEventListener("waiting", () => {
+            if (loadingCont.classList.has('shown')) return;
+            
+            loadingCont.classList.add('shown');
+        })
+        
+        currentVideo.addEventListener("playing", () => {
+            if (loadingCont.classList.has('shown')) {
+                loadingCont.classList.remove("shown");
+            }
+        });
+
+        currentVideo.addEventListener("pause", () => {
+            if (loadingCont.classList.has('shown')) {
+                loadingCont.classList.remove("shown");
+            }
+        });
+
+        currentVideo.addEventListener("ended", () => {
+            if (loadingCont.classList.has('shown')) {
+                loadingCont.classList.remove("shown");
+            }
+        });
+        /* ------------------------------------------- */
+
+
         /* Progress Bar changes */
         progressBar.addEventListener("mousemove", function(e) {   // Show 'seek-point' by hovering on 'progress bar'
             seekProgress.style.width = `${(100 * (e.offsetX)) / progressBar.offsetWidth}%`;
@@ -510,9 +538,6 @@ if (!!currentVideo) {
             }
         })
 
-        currentVideo.addEventListener("waiting", e => {
-            console.log('loading 🐬');
-        })
 
         currentVideo.addEventListener("timeupdate", function() {    // Update the 'play-progress' by updating the time of video
             const crntTime = Math.floor(currentVideo.currentTime);
