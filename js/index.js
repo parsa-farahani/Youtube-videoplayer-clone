@@ -540,7 +540,8 @@ if (!!currentVideo) {
 
 
         currentVideo.addEventListener("timeupdate", function() {    // Update the 'play-progress' by updating the time of video
-            const crntTime = Math.floor(currentVideo.currentTime);
+            // const crntTime = Math.floor(currentVideo.currentTime);
+            const crntTime = currentVideo.currentTime;
             playProgress.style.width = `${(100 * crntTime) / DURATION}%`;
             currentTimeText.innerText = formatVideoTime(crntTime);
             lastCurrentTime = crntTime;
