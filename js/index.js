@@ -510,6 +510,10 @@ if (!!currentVideo) {
             }
         })
 
+        currentVideo.addEventListener("waiting", e => {
+            console.log('loading 🐬');
+        })
+
         currentVideo.addEventListener("timeupdate", function() {    // Update the 'play-progress' by updating the time of video
             const crntTime = Math.floor(currentVideo.currentTime);
             playProgress.style.width = `${(100 * crntTime) / DURATION}%`;
